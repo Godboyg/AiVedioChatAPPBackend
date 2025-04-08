@@ -69,7 +69,7 @@ Which user is the best match based on similar or related interests?
     try {
       if(typeof message === "string"){
         const partner = others[matchIndex];
-        console.log("khvjhv",others);
+        console.log("other users",others);
         console.log("partner socket......",partner);
         console.log("partner from ai called");
         const [ socketId , msg ] = partner;
