@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors(
   {
-  origin: '*',
+  origin: ['https://aivediochatapp.netlify.app' , 'http://localhost:5173''],
   methods: ['GET', 'POST'],
   credentials: true,
 }
