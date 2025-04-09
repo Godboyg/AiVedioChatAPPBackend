@@ -13,7 +13,7 @@ require("dotenv").config();
 const matchWithGemini = require("./ai.js");
 
 const io = new Server(server , {
-  origin: ['https://aivediochatapp.netlify.app' , 'http://localhost:5173''],
+  origin: ['https://aivediochatapp.netlify.app' , 'http://localhost:5173'],
   methods: ['GET', 'POST'],
   credentials: true,
 });
@@ -27,7 +27,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors(
   {
-  origin: ['https://aivediochatapp.netlify.app' , 'http://localhost:5173''],
+  origin: ['https://aivediochatapp.netlify.app' , 'http://localhost:5173'],
   methods: ['GET', 'POST'],
   credentials: true,
 }
