@@ -12,7 +12,11 @@ require("dotenv").config();
 
 const matchWithGemini = require("./ai.js");
 
-const io = new Server(server);
+const io = new Server(server , {
+  origin: ['https://aivediochatapp.netlify.app'], // or '*'
+  methods: ['GET', 'POST'],
+  credentials: true,
+});
 
 var socketId = null;
 let psId = null;
@@ -21,7 +25,13 @@ const activeUsers = new Map();
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  {
+  origin: ['https://aivediochatapp.netlify.app'], // or '*'
+  methods: ['GET', 'POST'],
+  credentials: true,
+}
+));
 
 app.get("/",(req,res)=>{
   res.send("hello");
