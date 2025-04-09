@@ -96,6 +96,8 @@ app.post("/login",async(req,res)=>{
   }
 })
 
+console.log('🔍 Incoming headers:', socket.handshake.headers.cookie);
+
 io.use((socket, next) => {
   const cookie = socket.handshake.headers.cookie;
   if (!cookie) return next(new Error("No cookie found"));
