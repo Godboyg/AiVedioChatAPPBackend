@@ -100,6 +100,7 @@ console.log('🔍 Incoming headers:', socket.handshake.headers.cookie);
 
 io.use((socket, next) => {
   const cookie = socket.handshake.headers.cookie;
+  console.log('🔍 Incoming headers:', socket.handshake.headers.cookie);
   if (!cookie) return next(new Error("No cookie found"));
 
   const token = cookie
