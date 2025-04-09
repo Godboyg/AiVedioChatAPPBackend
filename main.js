@@ -62,8 +62,10 @@ app.post("/login",async(req,res)=>{
         expiresIn : "10d"
       })
        
-      res.cookie("auth_token",token,{
+      res.cookie("token",token,{
         httpOnly: true,
+        secure: true,
+        sameSite: "None",
         maxAge: 10 * 24 * 60 * 60, 
       })
   
