@@ -24,6 +24,7 @@ var socketId = null;
 let psId = null;
 const activeUsers = new Map();
 
+app.set('trust proxy', 1);
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.json());
