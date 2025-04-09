@@ -13,7 +13,7 @@ require("dotenv").config();
 const matchWithGemini = require("./ai.js");
 
 const io = new Server(server , {
-  origin: '*',
+  origin: 'https://aivediochatapp.netlify.app',
   methods: ['GET', 'POST'],
   credentials: true,
 });
