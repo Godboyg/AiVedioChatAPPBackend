@@ -102,13 +102,12 @@ io.on("connection", async(socket) => {
   socket.on("logged-user", (token)=>{
     try {
     const decoded = jwt.verify(token, process.env.Secret);
-    socket.userId = decoded._id;
+    userId = decoded._id;
       console.log("logged-in user",decoded);
     } catch (err) {
     console.log("error",err);
     }
   })
-  userId = socket.userId;
   console.log("user id",userId);
 
     if (userId) {
