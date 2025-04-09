@@ -98,7 +98,11 @@ app.post("/login",async(req,res)=>{
   }
 })
 
-io.use((socket, next) => {
+io.on("connection", async(socket) => {
+    console.log("A user connected: ", socket.id);
+    const userId = socket.userId;
+  
+    io.use((socket, next) => {
   const cookie = socket.handshake.headers.cookie;
   console.log('🔍 Incoming headers:', socket.handshake.headers.cookie);
   if (!cookie) return next(new Error("No cookie found"));
@@ -119,10 +123,6 @@ io.use((socket, next) => {
     return next(new Error("Invalid token"));
   }
 });
-
-io.on("connection", async(socket) => {
-    console.log("A user connected: ", socket.id);
-    const userId = socket.userId;
 
     if (userId) {
       try {
