@@ -15,7 +15,6 @@ const matchWithGemini = require("./ai.js");
 const io = new Server(server , {
   cors : {
   origin: ['https://aivediochatapp.netlify.app'],
-  methods: ['GET', 'POST'],
   credentials: true,
   }
 });
@@ -30,7 +29,6 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
   origin: ['https://aivediochatapp.netlify.app'],
-  methods: ['GET', 'POST'],
   credentials: true,
 }));
 
