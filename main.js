@@ -34,7 +34,7 @@ app.get("/",(req,res)=>{
 
 app.get("/ping", (req, res) => res.send("pong"));
 
-app.post("/api/login",async(req,res)=>{
+app.post("/login",async(req,res)=>{
 
   const { email, interest } = req.body;
   const CurrentUser = await userModel.findOne({ email : email });
