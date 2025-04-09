@@ -100,29 +100,23 @@ app.post("/login",async(req,res)=>{
 
 io.on("connection", async(socket) => {
     console.log("A user connected: ", socket.id);
-    const userId = socket.userId;
   
-    io.use((socket, next) => {
-  const cookie = socket.handshake.headers.cookie;
-  console.log('🔍 Incoming headers:', socket.handshake.headers.cookie);
-  if (!cookie) return next(new Error("No cookie found"));
+    const cookie = socket.handshake.headers.cookie;
+    console.log('🔍 Incoming headers:', socket.handshake.headers.cookie);
 
-  const token = cookie
-    .split('; ')
-    .find(row => row.startsWith('token='))
-    ?.split('=')[1];
+    const token = cookie
+      .split('; ')
+      .find(row => row.startsWith('token='))
+      ?.split('=')[1];
 
-  if (!token) return next(new Error("No token found"));
-
-  try {
-    const decoded = jwt.verify(token, process.env.Secret);
-    socket.userId = decoded._id;
-    next();
-  } catch (err) {
-    console.log("error",err);
-    return next(new Error("Invalid token"));
-  }
-});
+    try {
+      const decoded = jwt.verify(token, process.env.Secret);
+      socket.userId = decoded._id;
+    } catch (err) {
+      console.log("error",err);
+    }
+  const userId = socket.userId;
+  console.log("user id",userId);
 
     if (userId) {
       try {
