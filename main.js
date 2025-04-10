@@ -127,8 +127,9 @@ io.on("connection", async(socket) => {
           console.log("socket from ai",socketId);
           psId = socketId;
           console.log("peer id",psId);
-          io.to(socketId).emit("user found!","user found with the interest",message , socket.id);
-          socket.emit("user found!","user found with the interest",message,psId);
+          io.to(psId).emit("user found!","user found with the interest", message , socket.id);
+          io.to(socket.id).emit("user found!","user found with the interest", message , psId);
+          // socket.emit("user found!","user found with the interest",message,psId);
         }
       } catch (error) {
         console.error("Error updating socket ID:", error);
