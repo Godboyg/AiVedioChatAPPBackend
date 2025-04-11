@@ -96,16 +96,12 @@ app.post("/login",async(req,res)=>{
 io.on("connection", async(socket) => {
     console.log("A user connected: ", socket.id);
   socket.on("logged-user", (token)=>{
-    try {
-      console.log(token);
-      jwt.verify(token, process.env.Secret , (err, decoded) => {
-            if (err) return err;
-            userId = decoded._id;
-            console.log("logged-in user",decoded)
-      });
-    } catch (err) 
-      return err;
-    }
+    console.log(token);
+    jwt.verify(token, process.env.Secret , (err, decoded) => {
+         if (err) return err;
+         userId = decoded._id;
+         console.log("logged-in user",decoded)
+     });
   })
   console.log("user id",userId);
 
