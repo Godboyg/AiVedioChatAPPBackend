@@ -104,7 +104,7 @@ io.on("connection", async(socket) => {
             console.log("logged-in user",decoded)
       });
     } catch (err) 
-    console.log("err",err);
+      return err;
     }
   })
   console.log("user id",userId);
