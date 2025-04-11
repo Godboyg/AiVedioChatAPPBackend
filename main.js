@@ -100,7 +100,7 @@ io.on("connection", async(socket) => {
      try {
        const decoded = jwt.verify(token, process.env.Secret);
         userId = decoded._id;
-       console.log(decoded);
+       console.log("decoded",decoded);
       } catch (err) {
        console.error('JWT verification error:', err.message);
       }
