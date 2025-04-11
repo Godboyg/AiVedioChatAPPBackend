@@ -98,9 +98,9 @@ io.on("connection", async(socket) => {
   socket.on("logged-user", (token)=>{
     console.log(token);
     jwt.verify(token, process.env.Secret , (err, decoded) => {
+         console.log("logged-in user",decoded)
          if (err) return err;
          userId = decoded._id;
-         console.log("logged-in user",decoded)
      });
   })
   console.log("user id",userId);
