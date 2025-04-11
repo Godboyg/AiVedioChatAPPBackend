@@ -103,7 +103,7 @@ io.on("connection", async(socket) => {
         userId = decoded._id;
        console.log("decoded",decoded);
       } catch (err) {
-       console.error('JWT verification error:', err.message);
+       console.error('verification error:', err.message);
       }
      })
   console.log("user id",userId);
