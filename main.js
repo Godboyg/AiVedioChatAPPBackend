@@ -97,7 +97,7 @@ io.on("connection", async(socket) => {
     console.log("A user connected: ", socket.id);
     socket.on("logged-user", ({ token })=>{
      console.log("token backend",token);
-      const to = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2YzZDExM2IzODg1Mzg2ZGUyNjA5NGIiLCJlbWFpbCI6ImtAZ21haWwuY29tIiwiaWF0IjoxNzQ0MzY5NjI1fQ.Dj4OGFB12bdaYRLx99oiBa8uk56ujUJJKxgDpv0nr3Q';
+      const to = token;
      try {
        const decoded = jwt.verify(to, process.env.Secret);
         userId = decoded._id;
