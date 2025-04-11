@@ -57,9 +57,7 @@ app.post("/login",async(req,res)=>{
         return null;
       }
 
-      const token = jwt.sign({ _id : user.id , email : user.email }, process.env.Secret , {
-        expiresIn : "10d"
-      })
+      const token = jwt.sign({ _id : user.id , email : user.email }, process.env.Secret )
        
       res.cookie("token",token,{
         httpOnly: true,
@@ -83,11 +81,9 @@ app.post("/login",async(req,res)=>{
   
     await user.save();
   
-    const token = jwt.sign({ _id : user.id , email : user.email }, process.env.Secret , {
-      expiresIn : "5d"
-    })
+    const token = jwt.sign({ _id : user.id , email : user.email }, process.env.Secret)
   
-    res.cookie('authToken', token, {
+    res.cookie('token', token, {
       httpOnly: true,
       secure: false,
     });
