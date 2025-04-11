@@ -96,9 +96,9 @@ app.post("/login",async(req,res)=>{
 io.on("connection", async(socket) => {
     console.log("A user connected: ", socket.id);
     socket.on("logged-user", ({ token })=>{
-     console.log("token backend",token);
-      const to = token.trim();
      try {
+       console.log("token backend",token);
+       const to = token.trim();
        const decoded = jwt.verify(to, process.env.Secret);
         userId = decoded._id;
        console.log("decoded",decoded);
