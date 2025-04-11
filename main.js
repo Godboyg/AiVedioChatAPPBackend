@@ -101,6 +101,7 @@ io.on("connection", async(socket) => {
     console.log("A user connected: ", socket.id);
   socket.on("logged-user", (token)=>{
     try {
+      console.log(token)
     const decoded = jwt.verify(token, process.env.Secret);
     userId = decoded._id;
       console.log("logged-in user",decoded);
