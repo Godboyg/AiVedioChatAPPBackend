@@ -140,6 +140,9 @@ io.on("connection", async(socket) => {
     })
 
   socket.on("offer", ({ peerId , offer})=>{
+    if(peerId){
+      socket.emit("call!");
+    }
     io.to(peerId).emit("offer", { offer });
   })
 
