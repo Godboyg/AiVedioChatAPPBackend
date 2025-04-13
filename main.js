@@ -97,6 +97,8 @@ io.on("connection", async(socket) => {
     console.log("A user connected: ", socket.id);
     socket.on("logged-user", ({ token })=>{
      try {
+       const Htoken = req.headers.authorization?.split(' ')[1];
+       console.log("token in headers",Htoken);
        console.log("token backend",token);
        const to = token.trim();
        const decoded = jwt.verify(to, process.env.Secret);
