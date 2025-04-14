@@ -103,7 +103,7 @@ io.on("connection", async(socket) => {
        console.log("decoded",decoded);
       } catch (err) {
        const to = token.trim();
-       const decoded = jwt.verify(token, process.env.Secret);
+       const decoded = jwt.verify(to, process.env.Secret);
        userId = decoded._id;
        console.log("decoded in ctach",decoded);
       }
