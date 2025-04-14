@@ -168,7 +168,8 @@ io.on("connection", async(socket) => {
   });
 
   socket.on("disconnect", () => {
-    socket.broadcast.emit("callEnded")
+    // socket.broadcast.emit("callEnded")
+    io.to(psId).emit("callEnded")
     activeUsers.delete(socket.id);
     activeUsers.delete(psId);
     console.log("user disconnected",socket.id);
