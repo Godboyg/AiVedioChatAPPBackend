@@ -159,6 +159,14 @@ io.on("connection", async(socket) => {
     socket.emit("user left to reach",val);
   });
 
+  socket.on('typing', ({ toUserId }) => {
+    io.to(toUserId).emit('showTyping', { fromUserId: socket.id });
+  });
+
+  socket.on('stopTyping', ({ toUserId }) => {
+    io.to(toUserId).emit('stopTyping');
+  });
+
   socket.on("disconnect", () => {
     socket.broadcast.emit("callEnded")
     activeUsers.delete(socket.id);
