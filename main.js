@@ -98,14 +98,12 @@ io.on("connection", async(socket) => {
     socket.on("logged-user", ({ token })=>{
      try {
        console.log("token backend",token);
-       const decoded = jwt.verify(token, process.env.Secret);
+       const to = token.trim();
+       const decoded = jwt.verify(to, process.env.Secret);
         userId = decoded._id;
        console.log("decoded",decoded);
       } catch (err) {
-       const to = token.trim();
-       const decoded = jwt.verify(to, process.env.Secret);
-       userId = decoded._id;
-       console.log("decoded in ctach",decoded);
+       console.log("error getting user",err);
       }
      })
   console.log("user id",userId);
