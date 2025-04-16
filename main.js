@@ -22,6 +22,7 @@ const io = new Server(server , {
 var socketId = null;
 let psId = null;
 var userId = null;
+let AllUsers = [];
 const activeUsers = new Map();
 
 app.set('trust proxy', 1);
@@ -95,6 +96,8 @@ app.post("/login",async(req,res)=>{
 
 io.on("connection", async(socket) => {
     console.log("A user connected: ", socket.id);
+    AllUsers.push(socket.id);
+    io.emit('AllActiveUsers', AllUsers);
     socket.on("logged-user", ({ token })=>{
      try {
        console.log("token backend",token);
@@ -169,6 +172,8 @@ io.on("connection", async(socket) => {
 
   socket.on("disconnect", () => {
     // socket.broadcast.emit("callEnded")
+    activeUsers = activeUsers.filter(id => id !== socket.id);
+    io.emit('AllActiveUsers', activeUsers);
     io.to(psId).emit("callEnded")
     activeUsers.delete(socket.id);
     activeUsers.delete(psId);
