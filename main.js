@@ -172,8 +172,8 @@ io.on("connection", async(socket) => {
 
   socket.on("disconnect", () => {
     // socket.broadcast.emit("callEnded")
-    activeUsers = activeUsers.filter(id => id !== socket.id);
-    io.emit('AllActiveUsers', activeUsers);
+    AllUsers = AllUsers.filter(id => id !== socket.id);
+    io.emit('AllActiveUsers', AllUsers);
     io.to(psId).emit("callEnded")
     activeUsers.delete(socket.id);
     activeUsers.delete(psId);
